@@ -1,0 +1,8 @@
+[knapsack_capacity][number_of_items]
+[value_1] [weight_1]
+[value_2] [weight_2]
+...
+You can assume that all numbers are positive. 
+You should assume that item weights and the knapsack capacity are integers.
+
+The total value of an optimal solution is: 2493893 
