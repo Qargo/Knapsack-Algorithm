@@ -6,7 +6,7 @@ import numpy as np
 
 def knapsack_0_1_dp(v, w, C):
 	n = len(v)
-	cmax = (int)(C)
+	cmax = int(C)
 	# Subproblem solutions (two-dimensional array (n + 1)x(C + 1))
 	opt = [[0] * (cmax + 1) for _ in range(n + 1)]
 	# Base case (i = 0)
@@ -16,36 +16,36 @@ def knapsack_0_1_dp(v, w, C):
 	for i in range(0, n):
 		for c in range(0, cmax + 1):
 			# Use recursion formula
-			if (int)(w[i]) > c:
+			if int(w[i]) > c:
 				# Case 1
 				opt[i][c] = opt[i - 1][c]
 			else:
 				# max(Case 1, Case 2)
-				opt[i][c] = max(opt[i - 1][c], v[i] + opt[i - 1][c - (int)(w[i])])
+				opt[i][c] = max(opt[i - 1][c], v[i] + opt[i - 1][c - int(w[i])])
 	# Solution to largest subproblem
 	return opt
 
 def reconstruct(v, w, C, opt):
 	n = len(v)
 	# Remaining capacity
-	cmax = (int)(C)
+	cmax = int(C)
 	# Items included/excluded
 	opt_sol = [None] * n
 	# Trace back through the two-dimensional array
 	i = n - 1
 	while i >= 0:
-		if ((int)(w[i]) <= cmax) and \
-			(v[i] + opt[i - 1][cmax - (int)(w[i])] >= opt[i - 1][cmax]):
+		if (int(w[i]) <= cmax) and \
+			(v[i] + opt[i - 1][cmax - int(w[i])] >= opt[i - 1][cmax]):
 			# Case 2, include item i
 			opt_sol[i] = True
 			# Reserve space for included item
-			cmax = cmax - (int)(w[i])
+			cmax = cmax - int(w[i])
 		else: 
 			# Exclude item i, capacity unchanged
 			opt_sol[i] = False
 		i = i - 1
 	# Process optimal solution
-	print_solution(opt_sol, opt[n - 1][(int)(C)], v, w, C)
+	print_solution(opt_sol, opt[n - 1][int(C)], v, w, C)
 
 def print_solution(opt_sol, opt_val, v, w, C):
 	n = len(opt_sol)
