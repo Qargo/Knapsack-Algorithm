@@ -32,7 +32,7 @@ w = [3, 6, 9, 5]
 # Knapsack capacity
 C = 15
 # knapsack_0_1_or(v, [w], [C])
-v, w = np.loadtxt("knapsack_dataset.txt", dtype=int, unpack=True)
+v, w = np.loadtxt("knapsack_dataset_xl.txt", dtype=int, unpack=True)
 wl = []
 for i in range(1, len(w)):
 	wl.append(w[i])
